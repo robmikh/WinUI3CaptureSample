@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Metadata;
 using Windows.Graphics.Capture;
+using Windows.Graphics.DirectX.Direct3D11;
 using Windows.Graphics.Imaging;
 using Windows.Win32.Foundation;
 using Windows.Win32.Graphics.Direct3D11;
@@ -27,6 +28,7 @@ namespace WinUI3CaptureSample
 
             _hwnd = new HWND(WindowNative.GetWindowHandle(this));
             _d3dDevice = Direct3D11Helper.CreateD3DDevice();
+            _device = Direct3D11Helper.CreateDirect3DDeviceFromD3D11Device(_d3dDevice);
 
             InitWindowList();
             InitMonitorList();
@@ -182,7 +184,7 @@ namespace WinUI3CaptureSample
 
         private async void StartCaptureFromItem(GraphicsCaptureItem item)
         {
-            var surface = await CaptureSnapshot.CaptureAsync(_d3dDevice, item);
+            var surface = await CaptureSnapshot.CaptureAsync(_device, item);
             var softwareBitmap = await SoftwareBitmap.CreateCopyFromSurfaceAsync(surface, BitmapAlphaMode.Premultiplied);
 
             var source = new SoftwareBitmapSource();
@@ -196,5 +198,6 @@ namespace WinUI3CaptureSample
         private ObservableCollection<MonitorInfo> _monitors;
 
         private ID3D11Device _d3dDevice;
+        private IDirect3DDevice _device;
     }
 }

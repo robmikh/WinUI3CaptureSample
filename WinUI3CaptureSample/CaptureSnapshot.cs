@@ -14,9 +14,8 @@ namespace WinUI3CaptureSample
 {
     static class CaptureSnapshot
     {
-        public static async Task<IDirect3DSurface> CaptureAsync(ID3D11Device d3dDevice, GraphicsCaptureItem item)
+        public static async Task<IDirect3DSurface> CaptureAsync(IDirect3DDevice device, GraphicsCaptureItem item)
         {
-            var device = Direct3D11Helper.CreateDirect3DDeviceFromD3D11Device(d3dDevice);
             var framePool = Direct3D11CaptureFramePool.CreateFreeThreaded(
                 device,
                 DirectXPixelFormat.B8G8R8A8UIntNormalized,
