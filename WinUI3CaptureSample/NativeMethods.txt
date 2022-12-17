@@ -1,0 +1,14 @@
+﻿HMONITOR
+HWND
+ID3D11Texture2D
+ID3D11Device
+ID3D11DeviceContext
+IDirect3DDxgiInterfaceAccess
+IDXGIDevice
+CreateDirect3D11DeviceFromDXGIDevice
+D3D11CreateDevice
+CreateDirect3D11SurfaceFromDXGISurface
+D3D11_SDK_VERSION
+DXGI_ERROR_UNSUPPORTED
+HRESULT
+IGraphicsCaptureItemInterop
