@@ -104,7 +104,7 @@ namespace WinUI3CaptureSample
             if (ApiInformation.IsApiContractPresent(typeof(UniversalApiContract).FullName, 8))
             {
                 var processesWithWindows = from p in Process.GetProcesses()
-                                           where !string.IsNullOrWhiteSpace(p.MainWindowTitle) && WindowEnumerationHelper.IsWindowValidForCapture(p.MainWindowHandle)
+                                           where !string.IsNullOrWhiteSpace(p.MainWindowTitle) && WindowEnumerationHelper.IsWindowValidForCapture(new HWND(p.MainWindowHandle))
                                            select p;
                 _processes = new ObservableCollection<Process>(processesWithWindows);
                 WindowComboBox.ItemsSource = _processes;
