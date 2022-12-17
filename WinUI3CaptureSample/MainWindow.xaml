@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:WinUI3CaptureSample"
+    xmlns:diag="using:System.Diagnostics"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
@@ -20,18 +21,18 @@
             </Grid.RowDefinitions>
             <StackPanel Margin="10">
                 <Button x:Name="PickerButton" Content="Use Picker" Click="PickerButton_Click" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="10" />
-                <ComboBox x:Name="WindowComboBox" Margin="10" HorizontalAlignment="Stretch" SelectionChanged="WindowComboBox_SelectionChanged">
+                <ComboBox x:Name="WindowComboBox" Header="Windows"  Margin="10" HorizontalAlignment="Stretch" SelectionChanged="WindowComboBox_SelectionChanged">
                     <ComboBox.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding MainWindowTitle}" />
+                        <DataTemplate x:DataType="diag:Process">
+                            <TextBlock Text="{x:Bind MainWindowTitle}" />
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>
                 <Button x:Name="PrimaryMonitorButton" Content="Use Primary Monitor" Click="PrimaryMonitorButton_Click" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="10" />
-                <ComboBox x:Name="MonitorComboBox" Margin="10" HorizontalAlignment="Stretch" SelectionChanged="MonitorComboBox_SelectionChanged">
+                <ComboBox x:Name="MonitorComboBox" Header="Monitors"  Margin="10" HorizontalAlignment="Stretch" SelectionChanged="MonitorComboBox_SelectionChanged">
                     <ComboBox.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding DeviceName}" />
+                        <DataTemplate x:DataType="local:MonitorInfo">
+                            <TextBlock Text="{x:Bind DeviceName}" />
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>
