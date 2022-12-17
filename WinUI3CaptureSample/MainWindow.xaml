@@ -41,7 +41,7 @@
         </Grid>
 
         <Grid Grid.Column="1" Background="WhiteSmoke">
-            <Image x:Name="ScreenshotImage" />
+            <Image x:Name="ScreenshotImage" Margin="50" />
         </Grid>
     </Grid>
 </Window>
