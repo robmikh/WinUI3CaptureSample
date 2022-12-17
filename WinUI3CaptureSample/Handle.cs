@@ -9,7 +9,7 @@ namespace WinUI3CaptureSample
 {
     class EmptyHandle : SafeHandle
     {
-        public EmptyHandle() : base(IntPtr.Zero, true)
+        public EmptyHandle() : base(IntPtr.Zero, false)
         {
         }
 

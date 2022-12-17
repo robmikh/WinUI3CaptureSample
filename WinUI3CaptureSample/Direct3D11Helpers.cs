@@ -15,26 +15,11 @@ namespace WinUI3CaptureSample
     {
         private static readonly uint DXGI_ERROR_UNSUPPORTED = 0x887A0004;
 
-        private class NullHandle : SafeHandle
-        {
-            public NullHandle() : base(IntPtr.Zero, false)
-            {
-            }
-
-            public override bool IsInvalid => true;
-
-            protected override bool ReleaseHandle()
-            {
-                // Do nothing
-                return true;
-            }
-        }
-
         private static ID3D11Device CreateD3DDevice(D3D_DRIVER_TYPE driverType, D3D11_CREATE_DEVICE_FLAG flags)
         {
             unsafe
             {
-                D3D11CreateDevice(null, driverType, new NullHandle(), flags, null, D3D11_SDK_VERSION, out var device, null, out var context);
+                D3D11CreateDevice(null, driverType, new EmptyHandle(), flags, null, D3D11_SDK_VERSION, out var device, null, out var context);
                 return device;
             }
         }
