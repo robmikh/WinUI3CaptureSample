@@ -23,6 +23,8 @@ namespace WinUI3CaptureSample
         {
             this.InitializeComponent();
 
+            Title = "WinUI3CaptureSample";
+
             _hwnd = new HWND(WindowNative.GetWindowHandle(this));
             _d3dDevice = Direct3D11Helper.CreateD3DDevice();
 
