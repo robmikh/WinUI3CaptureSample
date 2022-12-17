@@ -56,5 +56,10 @@ namespace WinUI3CaptureSample
 
             return true;
         }
+
+        public static bool IsMinimized(HWND hwnd)
+        {
+            return IsIconic(hwnd).Value != 0;
+        }
     }
 }

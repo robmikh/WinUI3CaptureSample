@@ -22,3 +22,4 @@ GetAncestor
 GetWindowLongPtr
 DwmGetWindowAttribute
 WINDOW_STYLE
+IsIconic

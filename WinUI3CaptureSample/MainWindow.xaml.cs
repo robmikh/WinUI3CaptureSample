@@ -106,7 +106,7 @@ namespace WinUI3CaptureSample
             if (ApiInformation.IsApiContractPresent(typeof(UniversalApiContract).FullName, 8))
             {
                 var processesWithWindows = from p in Process.GetProcesses()
-                                           where !string.IsNullOrWhiteSpace(p.MainWindowTitle) && WindowEnumerationHelper.IsWindowValidForCapture(new HWND(p.MainWindowHandle))
+                                           where !string.IsNullOrWhiteSpace(p.MainWindowTitle) && ShouldIncludeWindow(new HWND(p.MainWindowHandle))
                                            select p;
                 _processes = new ObservableCollection<Process>(processesWithWindows);
                 WindowComboBox.ItemsSource = _processes;
@@ -115,6 +115,11 @@ namespace WinUI3CaptureSample
             {
                 WindowComboBox.IsEnabled = false;
             }
+        }
+
+        private bool ShouldIncludeWindow(HWND hwnd)
+        {
+            return WindowEnumerationHelper.IsWindowValidForCapture(hwnd) && !WindowEnumerationHelper.IsMinimized(hwnd);
         }
 
         private void InitMonitorList()
